@@ -12,13 +12,13 @@ module tt_um_seven_segment_seconds(
 );
 
    wire 					     reset = ! rst_n;
-//   wire [7:0] 					     n;
+   wire [7:0] 					     n;
+   reg [15:0]  cnt;
+
    assign uo_out = cnt[15:8];
    // use bidirectionals as outputs
    assign uio_oe = 8'b11111111;
 //   assign uio_out = cnt[7:0];
-   
-   reg [15:0]  cnt;
 
    always @(posedge clk) begin
       // if reset, set counter to 0
