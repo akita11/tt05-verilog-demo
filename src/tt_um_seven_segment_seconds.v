@@ -12,12 +12,12 @@ module tt_um_seven_segment_seconds(
 );
 
    wire 					     reset = ! rst_n;
-   wire [7:0] 					     n;
+//   wire [7:0] 					     n;
    assign uo_out = cnt[15:8];
    // use bidirectionals as outputs
    assign uio_oe = 8'b11111111;
    // put bottom 8 bits of second counter out on the bidirectional gpio
-//   assign uio_out = cnt[7:0];
+   assign uio_out = cnt[7:0];
    
    // external clock is 10MHz, so need 24 bit counter
    reg [15:0]  cnt;
@@ -30,7 +30,9 @@ module tt_um_seven_segment_seconds(
          cnt <= cnt + 1;
       end
    end
+/*
    assign ui_in = {0, n[6:0]};
    assign uio_out[6:0] = ~n[6:0];
    buf (uio_out[7], n[7]);
+*/
 endmodule
