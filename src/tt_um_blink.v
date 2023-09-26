@@ -1,6 +1,6 @@
 `default_nettype none
 
-module tt_um_seven_segment_seconds(
+module tt_um_blink(
 				   input wire [7:0]  ui_in, // Dedicated inputs
 				   output wire [7:0] uo_out, // Dedicated outputs
 				   input wire [7:0]  uio_in, // IOs: Bidirectional Input path
@@ -16,12 +16,9 @@ module tt_um_seven_segment_seconds(
    reg [15:0]  cnt;
 
    assign uo_out = cnt[15:8];
-   // use bidirectionals as outputs
-   assign uio_oe = 8'b11111111;
-//   assign uio_out = cnt[7:0];
+   assign uio_oe = 8'b11111111;    // use bidirectionals as outputs
 
    always @(posedge clk) begin
-      // if reset, set counter to 0
       if (reset) begin
          cnt <= 0;
       end else begin
@@ -30,5 +27,4 @@ module tt_um_seven_segment_seconds(
    end
    assign n[7:0] = ui_in[7:0];
    assign uio_out[7:0] = ~n[7:0];
-//   buf (uio_out[7], n[7]);
 endmodule
