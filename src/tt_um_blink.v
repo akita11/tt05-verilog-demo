@@ -11,6 +11,7 @@ module tt_um_blink(
 				   input wire 	     rst_n     // reset_n - low to reset
 );
 
+	
    wire 					     reset = ! rst_n;
    wire [7:0] 					     n;
    reg [15:0]  cnt;
